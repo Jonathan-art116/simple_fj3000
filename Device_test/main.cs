@@ -5,10 +5,13 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO.Ports;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data;
+using MySql.Data.MySqlClient;
 
 namespace Device_test
 {
@@ -19,8 +22,10 @@ namespace Device_test
         {
             InitializeComponent();
             System.Windows.Forms.Control.CheckForIllegalCrossThreadCalls = false;
-            pCurrentWin  = this;
+            pCurrentWin = this;
         }
+
+        //public string[] lines = File.ReadAllLines("./test.txt", Encoding.Default);
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -36,6 +41,50 @@ namespace Device_test
                 }
                 if (comboBox1.Items.Count > 0)
                     comboBox1.SelectedIndex = 0;
+            }
+
+            string[] config = File.ReadAllLines(@"C:\config\config.ini");
+            string[] server = config[9].Split('=');
+            string ip = server[1];
+            string[] database = config[10].Split('=');
+            string dbname = database[1];
+            string[] user = config[11].Split('=');
+            string usname = user[1];
+            string[] pw = config[12].Split('=');
+            string pswd = pw[1];
+            string[] port = config[13].Split('=');
+            string pot = port[1];
+            string[] tablename = config[14].Split('=');
+            string tbname = tablename[1];
+
+
+
+
+            string connectString = null;
+            MySqlConnection cnn;
+            //connectString = "server=localhost;database=sndb;uid=root;pwd=root;port=3306";
+            connectString = "server=" + ip + ";database=" + dbname + ";uid=" + usname + ";pwd=" + pswd + ";port=" + pot;            
+            cnn = new MySqlConnection(connectString);
+            try
+            {
+                cnn.Open();
+                //string creatdatabase = "CREATE TABLE `PT601` (`ID` int(11) NOT NULL AUTO_INCREMENT, `SN` char(20) NOT NULL,`GPS` char(20) DEFAULT NULL,`LED` char(20) DEFAULT NULL,`Createtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY(`ID`), UNIQUE KEY `SN` (`SN`)) ENGINE = InnoDB DEFAULT CHARSET = utf8;";
+                string creatdatabase = "CREATE TABLE " + tbname + "(`ID` int(11) NOT NULL AUTO_INCREMENT, `SN` char(20) NOT NULL,`GPS` char(20) DEFAULT NULL,`LED` char(20) DEFAULT NULL,`Createtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY(`ID`), UNIQUE KEY `SN` (`SN`)) ENGINE = InnoDB DEFAULT CHARSET = utf8;";
+                MySqlCommand creat = new MySqlCommand(creatdatabase, cnn);
+                try
+                {
+                    creat.ExecuteNonQuery();
+                }
+                catch
+                {
+                    MessageBox.Show("Database Connection Successful!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                MessageBox.Show("Database Disconnection!");
+                this.Close();
             }
         }
 
@@ -75,7 +124,7 @@ namespace Device_test
             }
         }
 
-        
+
         public void post_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             string num = serialPort1.ReadLine();
@@ -88,14 +137,15 @@ namespace Device_test
 
         private void groupBox2_Enter(object sender, EventArgs e)
         {
-
+            
         }
+
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
-        
+
         private void button2_Click(object sender, EventArgs e)
         {
 

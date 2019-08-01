@@ -34,21 +34,25 @@ namespace Device_test
         public void button3_Click(object sender, EventArgs e)
         {
             PT601_TEST.pCurrentWin.serialPort1.Write("$LED:ON:GREEN\r\n");
+            PT601_TEST.pCurrentWin.serialPort1.Write("$LED:ON:RED\r\n");
+            PT601_TEST.pCurrentWin.serialPort1.Write("$LED:ON:YELLOW\r\n");
         }
 
         public void button4_Click(object sender, EventArgs e)
         {
             PT601_TEST.pCurrentWin.serialPort1.Write("$LED:OFF:GREEN\r\n");
+            PT601_TEST.pCurrentWin.serialPort1.Write("$LED:OFF:RED\r\n");
+            PT601_TEST.pCurrentWin.serialPort1.Write("$LED:OFF:YELLOW\r\n");
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            PT601_TEST.pCurrentWin.serialPort1.Write("$LED:TOGGLE:GREEN\r\n");
+            
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            PT601_TEST.pCurrentWin.serialPort1.Write("$LED:FLICK:GREEN\r\n");
+            
         }
     }
 }
