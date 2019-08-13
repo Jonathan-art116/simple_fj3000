@@ -25,9 +25,9 @@ namespace Device_test
             pCurrentWin = this;
         }
 
-        //public string[] lines = File.ReadAllLines("./test.txt", Encoding.Default);
-
-        private void Form1_Load(object sender, EventArgs e)
+        string connectString = null;
+        MySqlConnection cnn;
+        public void Form1_Load(object sender, EventArgs e)
         {
             RegistryKey keyCom = Registry.LocalMachine.OpenSubKey("Hardware\\DeviceMap\\SerialComm");
             if (keyCom != null)
@@ -42,7 +42,7 @@ namespace Device_test
                 if (comboBox1.Items.Count > 0)
                     comboBox1.SelectedIndex = 0;
             }
-
+            //从config.ini读取database配置
             string[] config = File.ReadAllLines(@"C:\config\config.ini");
             string[] server = config[9].Split('=');
             string ip = server[1];
@@ -57,11 +57,7 @@ namespace Device_test
             string[] tablename = config[14].Split('=');
             string tbname = tablename[1];
 
-
-
-
-            string connectString = null;
-            MySqlConnection cnn;
+            //连接数据库
             //connectString = "server=localhost;database=sndb;uid=root;pwd=root;port=3306";
             connectString = "server=" + ip + ";database=" + dbname + ";uid=" + usname + ";pwd=" + pswd + ";port=" + pot;            
             cnn = new MySqlConnection(connectString);
@@ -78,13 +74,14 @@ namespace Device_test
                 catch
                 {
                     MessageBox.Show("Database Connection Successful!");
+                    cnn.Close();
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
                 MessageBox.Show("Database Disconnection!");
-                this.Close();
+                this.Close(); //关闭主窗口
             }
         }
 
@@ -124,14 +121,53 @@ namespace Device_test
             }
         }
 
-
+        //读取串口返回数据
         public void post_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            string num = serialPort1.ReadLine();
-            if (num.IndexOf('$') == 0)//&& num.EndsWith("\r\n"))
+            try
             {
-                f2.textBox1.Text += num;
-                //f3.textBox1.Text += num;
+                string p_data = (serialPort1.ReadLine() + "\r\n");
+                string[] t_data = p_data.Split(':');
+                if (p_data.IndexOf("$GPS") == 0)//&& num.EndsWith("\r\n"))
+                {
+                    //string[] t_data = p_data.Split(':');
+                    int i;
+                    for(i=2;i<10;i++)
+                    {
+                        f2.textBox1.Text += t_data[i];
+                    }
+                    //f2.textBox1.Text +=  t_data[2];
+                    //f2.textBox1.Text += GPS[2]; //gps测试返回数据
+                    //f3.textBox1.Text += num;
+                }
+                else if(p_data.IndexOf("$LIS:A") == 0)
+                {
+                    f4.textBox1.Text = "";
+                    f4.textBox1.Text = t_data[2];
+                    f4.textBox2.Text = "";
+                    f4.textBox2.Text = t_data[3];
+                    f4.textBox3.Text = "";
+                    f4.textBox3.Text = t_data[4];
+                }
+                else if(p_data.IndexOf("$LIS:T") == 0)
+                {
+                    f4.textBox4.Text = "";
+                    f4.textBox4.Text = t_data[2];
+                }
+                else if(p_data.IndexOf("$FAT:F") == 0)
+                {
+                    f5.textBox1.Text = "";
+                    f5.textBox1.Text = t_data[2];
+                }
+                else if (p_data.IndexOf("$ONE:R") == 0)
+                {
+                    f6.textBox1.Text = "";
+                    f6.textBox1.Text = t_data[2];
+                }
+            }
+            catch
+            {
+        
             }
         }
 
@@ -148,7 +184,7 @@ namespace Device_test
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+           
         }
 
         private void textBox1_TextChanged_1(object sender, EventArgs e)
@@ -158,7 +194,7 @@ namespace Device_test
 
         private void groupBox1_Enter(object sender, EventArgs e)
         {
-
+            
         }
 
         public GPS f2 = new GPS();
@@ -166,12 +202,13 @@ namespace Device_test
         {
             if (isOpened)
             {
-                f2.textBox1.Text = "";
+                f2.textBox1.Text = "";//清除textbox显示内容
                 //serialPort1.Write("$GPS:START\r\n");
                 f2.ShowDialog();
                 if (f2.isClick_gps == true)
                 {
                     button2.ForeColor = Color.Blue;
+                    //button3.PerformClick();
                 }
                 else
                 {
@@ -187,7 +224,7 @@ namespace Device_test
         public LED f3 = new LED();
         private void button3_Click(object sender, EventArgs e)
         {
-            if (isOpened)
+            if (isOpened)// && button2.ForeColor == Color.Blue)
             {
                 f3.ShowDialog();
                 if (f3.isClick_led == true)
@@ -197,6 +234,114 @@ namespace Device_test
                 else
                 {
                     button3.ForeColor = Color.Red;
+                }    
+            }
+            //else if (button2.ForeColor == Color.Red)
+            //{
+            //    MessageBox.Show("Please complete the GPS test");
+            //}
+            else 
+            {
+                MessageBox.Show("SerialPort Open Fail！");
+            }
+        }
+        //auto_test键 选择是否删除
+        public void button22_Click(object sender, EventArgs e)
+        {
+            //button2.PerformClick(); //触发GPS测试窗口
+        }
+
+        private void button23_Click(object sender, EventArgs e)
+        {
+            //if (button2.ForeColor == Color.Blue && button3.ForeColor == Color.Blue)
+            //{
+            //    cnn.Open();
+            //    string select = "select * from pt601 where SN=1112345618;";
+            //    MySqlCommand select_1 = new MySqlCommand(select, cnn);
+            //    if (select_1.ExecuteScalar() == null) //查询设备是否存在
+            //    {
+            //        MessageBox.Show("this is null");
+            //    }
+                
+                //button23.Enabled = false;
+                //string result = "insert into pt601 (SN, GPS, LED) values(12245618, 'pass', 'pass')";
+                //MySqlCommand zhong = new MySqlCommand(result, cnn);
+                //try
+                //{
+                //    zhong.ExecuteNonQuery();
+                //}
+                //catch
+                //{
+                //    MessageBox.Show("Updated successfully!");
+                //    button23.Enabled = true;
+                //}  
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Please complete the functional test!");
+            //}
+        }
+
+        public G_sensor f4 = new G_sensor();
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (isOpened)
+            {
+                f4.ShowDialog();
+                if (f4.isClick_g == true)
+                {
+                    button4.ForeColor = Color.Blue;
+                }
+                else
+                {
+                    button4.ForeColor = Color.Red;
+                }
+            }
+            else
+            {
+                MessageBox.Show("SerialPort Open Fail！");
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        public FLASH f5 = new FLASH();
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (isOpened)
+            {
+                f5.ShowDialog();
+                if (f5.isClick_f == true)
+                {
+                    button5.ForeColor = Color.Blue;
+                }
+                else
+                {
+                    button5.ForeColor = Color.Red;
+                }
+            }
+            else
+            {
+                MessageBox.Show("SerialPort Open Fail！");
+            }
+        }
+
+        public ONEBUS f6 = new ONEBUS();
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (isOpened)
+            {
+                f6.ShowDialog();
+                if (f6.isClick_one == true)
+                {
+                    button6.ForeColor = Color.Blue;
+                }
+                else
+                {
+                    button6.ForeColor = Color.Red;
                 }
             }
             else

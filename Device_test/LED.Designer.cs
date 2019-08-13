@@ -38,9 +38,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(50, 285);
+            this.button2.Location = new System.Drawing.Point(66, 206);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(105, 44);
+            this.button2.Size = new System.Drawing.Size(90, 35);
             this.button2.TabIndex = 2;
             this.button2.Text = "Fail";
             this.button2.UseVisualStyleBackColor = true;
@@ -48,9 +48,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(295, 285);
+            this.button1.Location = new System.Drawing.Point(340, 206);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(105, 44);
+            this.button1.Size = new System.Drawing.Size(90, 35);
             this.button1.TabIndex = 3;
             this.button1.Text = "Pass";
             this.button1.UseVisualStyleBackColor = true;
@@ -58,7 +58,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(50, 179);
+            this.button3.Location = new System.Drawing.Point(80, 111);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 0;
@@ -68,7 +68,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(50, 58);
+            this.button4.Location = new System.Drawing.Point(80, 31);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 1;
@@ -79,7 +79,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(193, 62);
+            this.label1.Location = new System.Drawing.Point(265, 35);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(123, 15);
             this.label1.TabIndex = 4;
@@ -88,7 +88,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(193, 183);
+            this.label2.Location = new System.Drawing.Point(265, 115);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(123, 15);
             this.label2.TabIndex = 5;
@@ -98,7 +98,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(442, 349);
+            this.ClientSize = new System.Drawing.Size(484, 262);
             this.ControlBox = false;
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -107,6 +107,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button2);
             this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "LED";
             this.Text = "LED";
             this.ResumeLayout(false);

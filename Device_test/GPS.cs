@@ -23,18 +23,21 @@ namespace Device_test
         {
             Thread.Sleep(100);
             PT601_TEST.pCurrentWin.serialPort1.Write("$GPS:START\r\n");
+            
         }
 
         public bool isClick_gps = false;
         private void button1_Click(object sender, EventArgs e)
         {
             isClick_gps = true;
+            PT601_TEST.pCurrentWin.serialPort1.Write("$GPS:STOP\r\n");
             this.Close();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             isClick_gps = false;
+            PT601_TEST.pCurrentWin.serialPort1.Write("$GPS:STOP\r\n");
             this.Close();
         }
 

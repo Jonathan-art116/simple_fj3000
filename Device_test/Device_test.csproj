@@ -80,6 +80,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FLASH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FLASH.Designer.cs">
+      <DependentUpon>FLASH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="G-sensor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="G-sensor.Designer.cs">
+      <DependentUpon>G-sensor.cs</DependentUpon>
+    </Compile>
     <Compile Include="GPS.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,8 +110,20 @@
     <Compile Include="main.Designer.cs">
       <DependentUpon>main.cs</DependentUpon>
     </Compile>
+    <Compile Include="ONEBUS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ONEBUS.Designer.cs">
+      <DependentUpon>ONEBUS.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FLASH.resx">
+      <DependentUpon>FLASH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="G-sensor.resx">
+      <DependentUpon>G-sensor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GPS.resx">
       <DependentUpon>GPS.cs</DependentUpon>
     </EmbeddedResource>
@@ -108,6 +132,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="main.resx">
       <DependentUpon>main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ONEBUS.resx">
+      <DependentUpon>ONEBUS.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
