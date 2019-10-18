@@ -25,8 +25,14 @@ namespace Device_test
             pCurrentWin = this;
         }
 
-        string connectString = null;
-        MySqlConnection cnn;
+        class read_config
+        {
+            public static string tbname;
+
+        }
+
+        public string connectString;
+        public MySqlConnection cnn;
         public void Form1_Load(object sender, EventArgs e)
         {
             RegistryKey keyCom = Registry.LocalMachine.OpenSubKey("Hardware\\DeviceMap\\SerialComm");
@@ -42,20 +48,15 @@ namespace Device_test
                 if (comboBox1.Items.Count > 0)
                     comboBox1.SelectedIndex = 0;
             }
-            //从config.ini读取database配置
-            string[] config = File.ReadAllLines(@"C:\config\config.ini");
-            string[] server = config[9].Split('=');
-            string ip = server[1];
-            string[] database = config[10].Split('=');
-            string dbname = database[1];
-            string[] user = config[11].Split('=');
-            string usname = user[1];
-            string[] pw = config[12].Split('=');
-            string pswd = pw[1];
-            string[] port = config[13].Split('=');
-            string pot = port[1];
-            string[] tablename = config[14].Split('=');
-            string tbname = tablename[1];
+            
+            string ip = "10.18.255.116";
+            string dbname = "deming";
+            string usname = "deming";
+            string pswd = "A8ZtK*7febEX";
+            string pot = "3306";
+            read_config.tbname = "rosetta_US130_TMO_2000_0917";
+            connectString = "server=" + ip + ";database=" + dbname + ";uid=" + usname + ";pwd=" + pswd + ";port=" + pot;
+            cnn = new MySqlConnection(connectString);
 
             //连接数据库
             //connectString = "server=localhost;database=sndb;uid=root;pwd=root;port=3306";
@@ -64,8 +65,7 @@ namespace Device_test
             try
             {
                 cnn.Open();
-                //string creatdatabase = "CREATE TABLE `PT601` (`ID` int(11) NOT NULL AUTO_INCREMENT, `SN` char(20) NOT NULL,`GPS` char(20) DEFAULT NULL,`LED` char(20) DEFAULT NULL,`Createtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY(`ID`), UNIQUE KEY `SN` (`SN`)) ENGINE = InnoDB DEFAULT CHARSET = utf8;";
-                string creatdatabase = "CREATE TABLE " + tbname + "(`ID` int(11) NOT NULL AUTO_INCREMENT, `SN` char(20) NOT NULL,`GPS` char(20) DEFAULT NULL,`LED` char(20) DEFAULT NULL,`Createtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY(`ID`), UNIQUE KEY `SN` (`SN`)) ENGINE = InnoDB DEFAULT CHARSET = utf8;";
+                string creatdatabase = "CREATE TABLE " + read_config.tbname + "(`ID` int(11) NOT NULL AUTO_INCREMENT, `SN` char(20) NOT NULL,`GPS` char(20) DEFAULT NULL,`LED` char(20) DEFAULT NULL,`Createtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY(`ID`), UNIQUE KEY `SN` (`SN`)) ENGINE = InnoDB DEFAULT CHARSET = utf8;";
                 MySqlCommand creat = new MySqlCommand(creatdatabase, cnn);
                 try
                 {
