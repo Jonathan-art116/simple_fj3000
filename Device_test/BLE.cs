@@ -11,29 +11,33 @@ using System.Threading;
 
 namespace Device_test
 {
-    public partial class FLASH : Form
+    public partial class BLE : Form
     {
-        public FLASH()
+        public BLE()
         {
             InitializeComponent();
         }
 
-        private void FLASH_Load(object sender, EventArgs e)
+        private void BLE_Load(object sender, EventArgs e)
         {
+            //Thread.Sleep(200);
+            PT601_TEST.pCurrentWin.serialPort1.Write("$BLE:LOOPBACK_START\r\n");
             Thread.Sleep(100);
-            PT601_TEST.pCurrentWin.serialPort1.Write("$FAT:DEVICEID\r\n");
+            PT601_TEST.pCurrentWin.serialPort1.Write("$BLE:SEND_DATA:LOOPBACK_successful.\r\n");
         }
 
-        public bool isClick_f = false;
+        public bool isClick_ble = false;
         private void button2_Click(object sender, EventArgs e)
         {
-            isClick_f = false;
+            isClick_ble = false;
+            //PT601_TEST.pCurrentWin.serialPort1.Write("$BLE:STOP\r\n");
             this.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            isClick_f = true;
+            isClick_ble = true;
+            //PT601_TEST.pCurrentWin.serialPort1.Write("$BLE:STOP\r\n");
             this.Close();
         }
     }

@@ -55,5 +55,10 @@ namespace Device_test
         {
             
         }
+
+        private void LED_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

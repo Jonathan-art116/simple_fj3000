@@ -49,12 +49,12 @@ namespace Device_test
                     comboBox1.SelectedIndex = 0;
             }
             
-            string ip = "10.18.255.116";
-            string dbname = "deming";
-            string usname = "deming";
-            string pswd = "A8ZtK*7febEX";
+            string ip = "localhost";
+            string dbname = "sndb";
+            string usname = "root";
+            string pswd = "root";
             string pot = "3306";
-            read_config.tbname = "rosetta_US130_TMO_2000_0917";
+            read_config.tbname = "FJ300";
             connectString = "server=" + ip + ";database=" + dbname + ";uid=" + usname + ";pwd=" + pswd + ";port=" + pot;
             cnn = new MySqlConnection(connectString);
 
@@ -73,7 +73,7 @@ namespace Device_test
                 }
                 catch
                 {
-                    MessageBox.Show("Database Connection Successful!");
+                    //MessageBox.Show("Database Connection Successful!");
                     cnn.Close();
                 }
             }
@@ -81,7 +81,7 @@ namespace Device_test
             {
                 MessageBox.Show(ex.Message);
                 MessageBox.Show("Database Disconnection!");
-                this.Close(); //关闭主窗口
+                //this.Close(); //关闭主窗口
             }
         }
 
@@ -157,12 +157,68 @@ namespace Device_test
                 else if(p_data.IndexOf("$FAT:F") == 0)
                 {
                     f5.textBox1.Text = "";
-                    f5.textBox1.Text = t_data[2];
+                    f5.textBox1.Text = t_data[3];
+                    f5.textBox2.Text = t_data[5];
                 }
-                else if (p_data.IndexOf("$ONE:R") == 0)
+                else if (p_data.IndexOf("$ONE:RESET:ONEBUS1") == 0)
                 {
                     f6.textBox1.Text = "";
-                    f6.textBox1.Text = t_data[2];
+                    f6.textBox1.Text = t_data[3];
+                }
+                else if (p_data.IndexOf("$ONE:RESET:ONEBUS2") == 0)
+                {
+                    f6.textBox2.Text = "";
+                    f6.textBox2.Text = t_data[3];
+                }
+                else if (p_data.IndexOf("$H3L:A") == 0)
+                {
+                    f7.textBox1.Text = "";
+                    f7.textBox1.Text = t_data[2];
+                    f7.textBox2.Text = "";
+                    f7.textBox2.Text = t_data[3];
+                    f7.textBox3.Text = "";
+                    f7.textBox3.Text = t_data[4];
+                }
+                else if (p_data.IndexOf("$OBD") == 0)
+                {
+                    f10.textBox1.Text = "";
+                    f10.textBox1.Text = t_data[1] + ":" + t_data[2] + ":" + t_data[3];
+                }
+                else if (p_data.IndexOf("$BLE:DATA_RECEIVED") == 0)
+                {
+                    f11.textBox1.Text = "";
+                    //f11.textBox1.Text = p_data;
+                    f11.textBox1.Text = t_data[2];
+                }
+                else if (p_data.IndexOf("$LTE:MODULE") ==0)
+                {
+                    f13.textBox1.Text = "";
+                    f13.textBox1.Text = t_data[2];
+                }
+                else if (p_data.IndexOf("$LTE:SIM") ==0)
+                {
+                    f13.textBox2.Text = "";
+                    f13.textBox2.Text = t_data[2];
+                }
+                else if (p_data.IndexOf("$LTE:IMEI") == 0)
+                {
+                    f13.textBox3.Text = "";
+                    f13.textBox3.Text = t_data[2];
+                }
+                else if (p_data.IndexOf("$LTE:IMSI") == 0)
+                {
+                    f13.textBox4.Text = "";
+                    f13.textBox4.Text = t_data[2];
+                }
+                else if (p_data.IndexOf("$LTE:ICCID") == 0)
+                {
+                    f13.textBox5.Text = "";
+                    f13.textBox5.Text = t_data[2];
+                }
+                else if (p_data.IndexOf("$SYS") == 0)
+                {
+                    f12.textBox1.Text = "";
+                    f12.textBox1.Text = t_data[1] + ":" + t_data[2];
                 }
             }
             catch
@@ -329,7 +385,7 @@ namespace Device_test
             }
         }
 
-        public ONEBUS f6 = new ONEBUS();
+        public DS2483 f6 = new DS2483();
         private void button6_Click(object sender, EventArgs e)
         {
             if (isOpened)
@@ -342,6 +398,153 @@ namespace Device_test
                 else
                 {
                     button6.ForeColor = Color.Red;
+                }
+            }
+            else
+            {
+                MessageBox.Show("SerialPort Open Fail！");
+            }
+        }
+
+        public H3LIS331DL f7 = new H3LIS331DL();
+        private void button7_Click(object sender, EventArgs e)
+        {
+            if (isOpened)
+            {
+                f7.ShowDialog();
+                if (f7.isClick_h3l == true)
+                {
+                    button7.ForeColor = Color.Blue;
+                }
+                else
+                {
+                    button7.ForeColor = Color.Red;
+                }
+            }
+            else
+            {
+                MessageBox.Show("SerialPort Open Fail！");
+            }
+        }
+
+        public BUZZER f8 = new BUZZER();
+        private void button8_Click(object sender, EventArgs e)
+        {
+            if (isOpened)
+            {
+                f8.ShowDialog();
+                if (f8.isClick_buz == true)
+                {
+                    button8.ForeColor = Color.Blue;
+                }
+                else
+                {
+                    button8.ForeColor = Color.Red;
+                }
+            }
+            else
+            {
+                MessageBox.Show("SerialPort Open Fail！");
+            }
+        }
+
+        public BAT f9 = new BAT();
+        private void button9_Click(object sender, EventArgs e)
+        {
+            if (isOpened)
+            {
+                f9.ShowDialog();
+                if (f9.isClick_bat == true)
+                {
+                    button9.ForeColor = Color.Blue;
+                }
+                else
+                {
+                    button9.ForeColor = Color.Red;
+                }
+            }
+            else
+            {
+                MessageBox.Show("SerialPort Open Fail！");
+            }
+        }
+
+        public OBD f10 = new OBD();
+        private void button10_Click(object sender, EventArgs e)
+        {
+            if (isOpened)
+            {
+                f10.ShowDialog();
+                if (f10.isClick_obd == true)
+                {
+                    button10.ForeColor = Color.Blue;
+                }
+                else
+                {
+                    button10.ForeColor = Color.Red;
+                }
+            }
+            else
+            {
+                MessageBox.Show("SerialPort Open Fail！");
+            }
+        }
+
+        public BLE f11 = new BLE();
+        private void button11_Click(object sender, EventArgs e)
+        {
+            if (isOpened)
+            {
+                f11.ShowDialog();
+                if (f11.isClick_ble == true)
+                {
+                    button11.ForeColor = Color.Blue;
+                }
+                else
+                {
+                    button11.ForeColor = Color.Red;
+                }
+            }
+            else
+            {
+                MessageBox.Show("SerialPort Open Fail！");
+            }
+        }
+
+        public LTE f13 = new LTE();
+        private void button13_Click(object sender, EventArgs e)
+        {
+            if (isOpened)
+            {
+                f13.ShowDialog();
+                if (f13.isClick_lte == true)
+                {
+                    button13.ForeColor = Color.Blue;
+                }
+                else
+                {
+                    button13.ForeColor = Color.Red;
+                }
+            }
+            else
+            {
+                MessageBox.Show("SerialPort Open Fail！");
+            }
+        }
+
+        public version f12 = new version();
+        private void button12_Click(object sender, EventArgs e)
+        {
+            if (isOpened)
+            {
+                f12.ShowDialog();
+                if (f12.isClick_ver == true)
+                {
+                    button12.ForeColor = Color.Blue;
+                }
+                else
+                {
+                    button12.ForeColor = Color.Red;
                 }
             }
             else

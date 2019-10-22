@@ -11,31 +11,30 @@ using System.Threading;
 
 namespace Device_test
 {
-    public partial class ONEBUS : Form
+    public partial class version : Form
     {
-        public ONEBUS()
+        public version()
         {
             InitializeComponent();
         }
 
-
-        public bool isClick_one = false;
-        private void button1_Click(object sender, EventArgs e)
-        {
-            isClick_one = true;
-            this.Close();
-        }
-
+        public bool isClick_ver = false;
         private void button2_Click(object sender, EventArgs e)
         {
-            isClick_one = false;
+            isClick_ver = false;
             this.Close();
         }
 
-        private void ONEBUS_Load(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
+        {
+            isClick_ver = true;
+            this.Close();
+        }
+
+        private void version_Load(object sender, EventArgs e)
         {
             Thread.Sleep(100);
-            PT601_TEST.pCurrentWin.serialPort1.Write("$ONE:RESET\r\n");
+            PT601_TEST.pCurrentWin.serialPort1.Write("$SYS:VER\r\n");
         }
     }
 }

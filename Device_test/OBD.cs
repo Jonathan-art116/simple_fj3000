@@ -11,30 +11,35 @@ using System.Threading;
 
 namespace Device_test
 {
-    public partial class FLASH : Form
+    public partial class OBD : Form
     {
-        public FLASH()
+        public OBD()
         {
             InitializeComponent();
         }
 
-        private void FLASH_Load(object sender, EventArgs e)
+        private void OBD_Load(object sender, EventArgs e)
         {
-            Thread.Sleep(100);
-            PT601_TEST.pCurrentWin.serialPort1.Write("$FAT:DEVICEID\r\n");
+            Thread.Sleep(500);
+            PT601_TEST.pCurrentWin.serialPort1.Write("$OBD:ver\r\n");
         }
 
-        public bool isClick_f = false;
+        public bool isClick_obd = false;
         private void button2_Click(object sender, EventArgs e)
         {
-            isClick_f = false;
+            isClick_obd = false;
             this.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            isClick_f = true;
+            isClick_obd = true;
             this.Close();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

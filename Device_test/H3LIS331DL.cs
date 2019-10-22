@@ -11,29 +11,31 @@ using System.Threading;
 
 namespace Device_test
 {
-    public partial class FLASH : Form
+    public partial class H3LIS331DL : Form
     {
-        public FLASH()
+        public H3LIS331DL()
         {
             InitializeComponent();
         }
 
-        private void FLASH_Load(object sender, EventArgs e)
+        private void H3LIS331DL_Load(object sender, EventArgs e)
         {
             Thread.Sleep(100);
-            PT601_TEST.pCurrentWin.serialPort1.Write("$FAT:DEVICEID\r\n");
+            PT601_TEST.pCurrentWin.serialPort1.Write("$H3L:START\r\n");
         }
 
-        public bool isClick_f = false;
+        public bool isClick_h3l = false;
         private void button2_Click(object sender, EventArgs e)
         {
-            isClick_f = false;
+            isClick_h3l = false;
+            PT601_TEST.pCurrentWin.serialPort1.Write("$H3L:STOP\r\n");
             this.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            isClick_f = true;
+            isClick_h3l = true; ;
+            PT601_TEST.pCurrentWin.serialPort1.Write("$H3L:STOP\r\n");
             this.Close();
         }
     }

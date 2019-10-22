@@ -24,7 +24,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>5</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -80,17 +80,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BAT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BAT.Designer.cs">
+      <DependentUpon>BAT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BLE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BLE.Designer.cs">
+      <DependentUpon>BLE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BUZZER.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BUZZER.Designer.cs">
+      <DependentUpon>BUZZER.cs</DependentUpon>
+    </Compile>
     <Compile Include="FLASH.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FLASH.Designer.cs">
       <DependentUpon>FLASH.cs</DependentUpon>
     </Compile>
-    <Compile Include="G-sensor.cs">
+    <Compile Include="H3LIS331DL.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="G-sensor.Designer.cs">
-      <DependentUpon>G-sensor.cs</DependentUpon>
+    <Compile Include="H3LIS331DL.Designer.cs">
+      <DependentUpon>H3LIS331DL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LIS3DH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LIS3DH.Designer.cs">
+      <DependentUpon>LIS3DH.cs</DependentUpon>
     </Compile>
     <Compile Include="GPS.cs">
       <SubType>Form</SubType>
@@ -104,25 +128,55 @@
     <Compile Include="LED.Designer.cs">
       <DependentUpon>LED.cs</DependentUpon>
     </Compile>
+    <Compile Include="LTE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LTE.Designer.cs">
+      <DependentUpon>LTE.cs</DependentUpon>
+    </Compile>
     <Compile Include="main.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="main.Designer.cs">
       <DependentUpon>main.cs</DependentUpon>
     </Compile>
-    <Compile Include="ONEBUS.cs">
+    <Compile Include="DS2483.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ONEBUS.Designer.cs">
-      <DependentUpon>ONEBUS.cs</DependentUpon>
+    <Compile Include="DS2483.Designer.cs">
+      <DependentUpon>DS2483.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OBD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OBD.Designer.cs">
+      <DependentUpon>OBD.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="version.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="version.Designer.cs">
+      <DependentUpon>version.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="BAT.resx">
+      <DependentUpon>BAT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BLE.resx">
+      <DependentUpon>BLE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BUZZER.resx">
+      <DependentUpon>BUZZER.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FLASH.resx">
       <DependentUpon>FLASH.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="G-sensor.resx">
-      <DependentUpon>G-sensor.cs</DependentUpon>
+    <EmbeddedResource Include="H3LIS331DL.resx">
+      <DependentUpon>H3LIS331DL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LIS3DH.resx">
+      <DependentUpon>LIS3DH.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GPS.resx">
       <DependentUpon>GPS.cs</DependentUpon>
@@ -130,11 +184,17 @@
     <EmbeddedResource Include="LED.resx">
       <DependentUpon>LED.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LTE.resx">
+      <DependentUpon>LTE.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="main.resx">
       <DependentUpon>main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ONEBUS.resx">
-      <DependentUpon>ONEBUS.cs</DependentUpon>
+    <EmbeddedResource Include="DS2483.resx">
+      <DependentUpon>DS2483.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OBD.resx">
+      <DependentUpon>OBD.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -146,6 +206,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="version.resx">
+      <DependentUpon>version.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Device_test_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
