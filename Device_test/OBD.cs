@@ -20,7 +20,7 @@ namespace Device_test
 
         private void OBD_Load(object sender, EventArgs e)
         {
-            Thread.Sleep(500);
+            Thread.Sleep(100);
             PT601_TEST.pCurrentWin.serialPort1.Write("$OBD:ver\r\n");
         }
 

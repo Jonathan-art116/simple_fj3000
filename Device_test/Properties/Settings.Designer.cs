@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Device_test.Properties {
+namespace FJ3000.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

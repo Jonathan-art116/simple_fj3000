@@ -130,12 +130,14 @@ namespace Device_test
                 string[] t_data = p_data.Split(':');
                 if (p_data.IndexOf("$GPS") == 0)//&& num.EndsWith("\r\n"))
                 {
+                    //f2.textBox1.Text = "";
+                    f2.textBox1.Text += p_data.Replace("$GPS:", "");
                     //string[] t_data = p_data.Split(':');
-                    int i;
-                    for(i=2;i<10;i++)
-                    {
-                        f2.textBox1.Text += t_data[i];
-                    }
+                    //int i;
+                    //for(i=1;i<10;i++)
+                    //{
+                    //    f2.textBox1.Text += t_data[i];
+                    //}
                     //f2.textBox1.Text +=  t_data[2];
                     //f2.textBox1.Text += GPS[2]; //gps测试返回数据
                     //f3.textBox1.Text += num;
@@ -179,10 +181,11 @@ namespace Device_test
                     f7.textBox3.Text = "";
                     f7.textBox3.Text = t_data[4];
                 }
-                else if (p_data.IndexOf("$OBD") == 0)
+                else if (p_data.IndexOf("VCM") == 0)
                 {
                     f10.textBox1.Text = "";
-                    f10.textBox1.Text = t_data[1] + ":" + t_data[2] + ":" + t_data[3];
+                    f10.textBox1.Text = p_data;
+                    //f10.textBox1.Text = t_data[1] + ":" + t_data[2] + ":" + t_data[3];
                 }
                 else if (p_data.IndexOf("$BLE:DATA_RECEIVED") == 0)
                 {
@@ -219,6 +222,31 @@ namespace Device_test
                 {
                     f12.textBox1.Text = "";
                     f12.textBox1.Text = t_data[1] + ":" + t_data[2];
+                }
+                else if (p_data.IndexOf("$BAT: Charge State") == 0)
+                {
+                    f9.textBox4.Text = "";
+                    f9.textBox4.Text = t_data[2];
+                }
+                else if (p_data.IndexOf("$BAT:ADC1") == 0)
+                {
+                    f9.textBox1.Text = "";
+                    f9.textBox1.Text = t_data[3];
+                }
+                else if (p_data.IndexOf("$BAT:ADC2") == 0)
+                {
+                    f9.textBox5.Text = "";
+                    f9.textBox5.Text = t_data[3];
+                }
+                else if (p_data.IndexOf("$BAT:CARBAT") == 0)
+                {
+                    f9.textBox2.Text = "";
+                    f9.textBox2.Text = t_data[3];
+                }
+                else if (p_data.IndexOf("$BAT:VBAT") == 0)
+                {
+                    f9.textBox3.Text = "";
+                    f9.textBox3.Text = t_data[3];
                 }
             }
             catch

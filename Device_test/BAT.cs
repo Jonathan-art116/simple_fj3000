@@ -34,13 +34,20 @@ namespace Device_test
         private void BAT_Load(object sender, EventArgs e)
         {
             Thread.Sleep(300);
-            //PT601_TEST.pCurrentWin.serialPort1.Write("$BAT:ADC1\r\n");
+            PT601_TEST.pCurrentWin.serialPort1.Write("$BAT:ALL\r\n");
             Thread.Sleep(100);
-            //PT601_TEST.pCurrentWin.serialPort1.Write("$BAT:ADC2\r\n");
+            PT601_TEST.pCurrentWin.serialPort1.Write("$BAT:ADC1\r\n");
             Thread.Sleep(100);
-            //PT601_TEST.pCurrentWin.serialPort1.Write("$BAT:CARBAT\r\n");
+            PT601_TEST.pCurrentWin.serialPort1.Write("$BAT:ADC2\r\n");
             Thread.Sleep(100);
-            //PT601_TEST.pCurrentWin.serialPort1.Write("$BAT:VBAT\r\n");
+            PT601_TEST.pCurrentWin.serialPort1.Write("$BAT:CARBAT\r\n");
+            Thread.Sleep(100);
+            PT601_TEST.pCurrentWin.serialPort1.Write("$BAT:VBAT\r\n");
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
