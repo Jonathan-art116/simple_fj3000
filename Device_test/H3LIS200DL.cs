@@ -38,5 +38,10 @@ namespace Device_test
             PT601_TEST.pCurrentWin.serialPort1.Write("$H3L:STOP\r\n");
             this.Close();
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

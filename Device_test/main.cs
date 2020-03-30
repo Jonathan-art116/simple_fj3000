@@ -54,7 +54,7 @@ namespace Device_test
             string usname = "root";
             string pswd = "root";
             string pot = "3306";
-            read_config.tbname = "FJ300";
+            read_config.tbname = "FJ3000";
             connectString = "server=" + ip + ";database=" + dbname + ";uid=" + usname + ";pwd=" + pswd + ";port=" + pot;
             cnn = new MySqlConnection(connectString);
 
@@ -142,7 +142,7 @@ namespace Device_test
                     //f2.textBox1.Text += GPS[2]; //gps测试返回数据
                     //f3.textBox1.Text += num;
                 }
-                else if(p_data.IndexOf("$LIS:A") == 0)
+                else if(p_data.IndexOf("$BMA:A") == 0)
                 {
                     f4.textBox1.Text = "";
                     f4.textBox1.Text = t_data[2];
@@ -151,7 +151,7 @@ namespace Device_test
                     f4.textBox3.Text = "";
                     f4.textBox3.Text = t_data[4];
                 }
-                else if(p_data.IndexOf("$LIS:T") == 0)
+                else if(p_data.IndexOf("$BMA:T") == 0)
                 {
                     f4.textBox4.Text = "";
                     f4.textBox4.Text = t_data[2];
@@ -579,6 +579,11 @@ namespace Device_test
             {
                 MessageBox.Show("SerialPort Open Fail！");
             }
+        }
+
+        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
     }
 }

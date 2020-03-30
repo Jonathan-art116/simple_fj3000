@@ -29,11 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PT601_TEST));
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button23 = new System.Windows.Forms.Button();
-            this.button22 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button21 = new System.Windows.Forms.Button();
@@ -57,6 +56,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.button22 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -83,7 +83,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button23);
             this.groupBox1.Controls.Add(this.button22);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.label1);
@@ -98,28 +97,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Settings";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
-            // 
-            // button23
-            // 
-            this.button23.Enabled = false;
-            this.button23.Location = new System.Drawing.Point(612, 39);
-            this.button23.Name = "button23";
-            this.button23.Size = new System.Drawing.Size(90, 35);
-            this.button23.TabIndex = 21;
-            this.button23.Text = "Upload";
-            this.button23.UseVisualStyleBackColor = true;
-            this.button23.Click += new System.EventHandler(this.button23_Click);
-            // 
-            // button22
-            // 
-            this.button22.Enabled = false;
-            this.button22.Location = new System.Drawing.Point(469, 38);
-            this.button22.Name = "button22";
-            this.button22.Size = new System.Drawing.Size(90, 35);
-            this.button22.TabIndex = 20;
-            this.button22.Text = "A-test";
-            this.button22.UseVisualStyleBackColor = true;
-            this.button22.Click += new System.EventHandler(this.button22_Click);
             // 
             // button1
             // 
@@ -266,7 +243,7 @@
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(90, 35);
             this.button11.TabIndex = 9;
-            this.button11.Text = "BLE";
+            this.button11.Text = "Bluetooth";
             this.button11.UseVisualStyleBackColor = true;
             this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
@@ -310,7 +287,7 @@
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(90, 35);
             this.button7.TabIndex = 5;
-            this.button7.Text = "H3LIS331DL";
+            this.button7.Text = "H3LIS200DL";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
@@ -343,7 +320,7 @@
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(90, 35);
             this.button4.TabIndex = 2;
-            this.button4.Text = "LIS3DH";
+            this.button4.Text = "BMA253";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
@@ -369,6 +346,15 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
+            // button22
+            // 
+            this.button22.Location = new System.Drawing.Point(627, 39);
+            this.button22.Name = "button22";
+            this.button22.Size = new System.Drawing.Size(90, 35);
+            this.button22.TabIndex = 13;
+            this.button22.Text = "DataBase";
+            this.button22.UseVisualStyleBackColor = true;
+            // 
             // PT601_TEST
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -378,6 +364,7 @@
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -420,7 +407,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button22;
-        private System.Windows.Forms.Button button23;
     }
 }
 

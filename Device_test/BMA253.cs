@@ -27,21 +27,21 @@ namespace Device_test
         private void button2_Click(object sender, EventArgs e)
         {
             isClick_g = false;
-            PT601_TEST.pCurrentWin.serialPort1.Write("$LIS:STOP\r\n");
+            PT601_TEST.pCurrentWin.serialPort1.Write("$BMA:STOP\r\n");
             this.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             isClick_g = true;
-            PT601_TEST.pCurrentWin.serialPort1.Write("$LIS:STOP\r\n");
+            PT601_TEST.pCurrentWin.serialPort1.Write("$BMA:STOP\r\n");
             this.Close();
         }
 
         private void G_sensor_Load(object sender, EventArgs e)
         {
             Thread.Sleep(100);
-            PT601_TEST.pCurrentWin.serialPort1.Write("$LIS:START\r\n");
+            PT601_TEST.pCurrentWin.serialPort1.Write("$BMA:START\r\n");
         }
 
         public void textBox1_TextChanged(object sender, EventArgs e)

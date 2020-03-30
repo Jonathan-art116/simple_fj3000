@@ -55,13 +55,20 @@
     <ManifestCertificateThumbprint>A166932AAFF655495727369397E7E69E04F0369B</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>Device_test_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>
+    </ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Device_test_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MySql.Data, Version=8.0.13.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
@@ -86,11 +93,11 @@
     <Compile Include="BAT.Designer.cs">
       <DependentUpon>BAT.cs</DependentUpon>
     </Compile>
-    <Compile Include="BLE.cs">
+    <Compile Include="Bluetooth.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BLE.Designer.cs">
-      <DependentUpon>BLE.cs</DependentUpon>
+    <Compile Include="Bluetooth.Designer.cs">
+      <DependentUpon>Bluetooth.cs</DependentUpon>
     </Compile>
     <Compile Include="BUZZER.cs">
       <SubType>Form</SubType>
@@ -104,17 +111,17 @@
     <Compile Include="FLASH.Designer.cs">
       <DependentUpon>FLASH.cs</DependentUpon>
     </Compile>
-    <Compile Include="H3LIS331DL.cs">
+    <Compile Include="H3LIS200DL.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="H3LIS331DL.Designer.cs">
-      <DependentUpon>H3LIS331DL.cs</DependentUpon>
+    <Compile Include="H3LIS200DL.Designer.cs">
+      <DependentUpon>H3LIS200DL.cs</DependentUpon>
     </Compile>
-    <Compile Include="LIS3DH.cs">
+    <Compile Include="BMA253.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LIS3DH.Designer.cs">
-      <DependentUpon>LIS3DH.cs</DependentUpon>
+    <Compile Include="BMA253.Designer.cs">
+      <DependentUpon>BMA253.cs</DependentUpon>
     </Compile>
     <Compile Include="GPS.cs">
       <SubType>Form</SubType>
@@ -163,8 +170,8 @@
     <EmbeddedResource Include="BAT.resx">
       <DependentUpon>BAT.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BLE.resx">
-      <DependentUpon>BLE.cs</DependentUpon>
+    <EmbeddedResource Include="Bluetooth.resx">
+      <DependentUpon>Bluetooth.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BUZZER.resx">
       <DependentUpon>BUZZER.cs</DependentUpon>
@@ -172,11 +179,11 @@
     <EmbeddedResource Include="FLASH.resx">
       <DependentUpon>FLASH.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="H3LIS331DL.resx">
-      <DependentUpon>H3LIS331DL.cs</DependentUpon>
+    <EmbeddedResource Include="H3LIS200DL.resx">
+      <DependentUpon>H3LIS200DL.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LIS3DH.resx">
-      <DependentUpon>LIS3DH.cs</DependentUpon>
+    <EmbeddedResource Include="BMA253.resx">
+      <DependentUpon>BMA253.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GPS.resx">
       <DependentUpon>GPS.cs</DependentUpon>
