@@ -56,7 +56,6 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.button22 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -83,7 +82,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button22);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.comboBox1);
@@ -346,15 +344,6 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
-            // button22
-            // 
-            this.button22.Location = new System.Drawing.Point(627, 39);
-            this.button22.Name = "button22";
-            this.button22.Size = new System.Drawing.Size(90, 35);
-            this.button22.TabIndex = 13;
-            this.button22.Text = "DataBase";
-            this.button22.UseVisualStyleBackColor = true;
-            // 
             // PT601_TEST
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -406,7 +395,6 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button22;
     }
 }
 
